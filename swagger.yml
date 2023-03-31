@@ -1,0 +1,185 @@
+openapi: 3.0.0
+info:
+  title: "MPS Flask REST API"
+  description: "Atividade de MPS"
+  version: "1.0.0"
+
+servers:
+  - url: "/api"
+
+# USER
+
+components:
+  schemas:
+    User:
+      type: "object"
+      required:
+        - user_id
+      properties:
+        user_id:
+          type: "string"
+        user_name:
+          type: "string"
+        user_email: 
+          type: "string"
+        user_password:
+          type: "string"
+        user_status:
+          type: "string"
+
+    Event:
+      type: "object"
+      required:
+        - event_id
+      properties:
+        event_id:
+          type: "string"
+        event_title:
+          type: "string"
+        event_datetime:
+          type: "string"
+        event_description:
+          type: "string"
+        event_status:
+          type: "string"
+        user_id:
+          type: "string"
+  parameters:
+    user_id:
+      name: "user_id"
+      description: "ID of the person to get"
+      in: path
+      required: True
+      schema:
+        type: "string"
+    event_id:
+      name: "event_id"
+      description: "ID of the event to get"
+      in: path
+      required: True
+      schema:
+        type: "string"
+
+paths:
+  # Retorna todos os usuários
+  /user:
+    get:
+      operationId: "user.read_all"
+      tags:
+        - "User"
+      summary: "Read the list of users"
+      responses:
+        "200":
+          description: "Successfully read user list"
+    post:
+      operationId: "user.create"
+      tags:
+        - "User"
+      summary: "Create a new user | Cadastro"
+      requestBody:
+        description: "User to create"
+        required: true
+        content:
+          application/json:
+            schema:
+              x-body-name: "user"
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: "Successfully created user"
+  # Retorna um usuário específico
+  /user/{user_id}:
+    # Login 
+    get:
+      operationId: "user.read_one"
+      tags:
+        - "User"
+      summary: "Read one user | Login"
+      parameters:
+        - $ref: "#/components/parameters/user_id"
+      responses:
+        "200":
+          description: "Successfully read user"
+    # Editar usuário
+    put:
+      tags:
+        - "User"
+      operationId: "user.update"
+      summary: "Update a user"
+      parameters:
+        - $ref: "#/components/parameters/user_id"
+      responses:
+        "200":
+          description: "Successfully updated user"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-body-name: "user"
+              $ref: "#/components/schemas/User"
+    delete:
+      tags:
+        - "User"
+      operationId: "user.delete"
+      summary: "Delete a user"
+      parameters:
+        - $ref: "#/components/parameters/user_id"
+      responses:
+        "204":
+          description: "Successfully deleted user"
+  # Listar eventos
+  /user/{user_id}/events:
+    get:
+      operationId: "event.read_all"
+      tags:
+        - "Event"
+      summary: "Read the list of events of a user | Visualizar eventos "
+      parameters:
+        - $ref: "#/components/parameters/user_id"
+      responses:
+        "200":
+          description: "Successfully read event list"
+
+    post:
+      operationId: "event.create"
+      tags:
+        - "Event"
+      summary: "Create a new event"
+      parameters:
+        - $ref: "#/components/parameters/user_id"
+      requestBody:
+        description: "Event to create"
+        required: true
+        content:
+          application/json:
+            schema:
+              x-body-name: "event"
+              $ref: "#/components/schemas/Event"
+      responses:
+        "200":
+          description: "Successfully created event"
+
+  /user/{user_id}/events/{event_id}:
+    get:
+      operationId: "event.read_one"
+      tags:
+        - "Event"
+      summary: "Read only one event of a user | Visualizar evento"
+      parameters:
+        - $ref: "#/components/parameters/user_id"
+        - $ref: "#/components/parameters/event_id"
+      responses:
+        "200":
+          description: "Successfully read event"
+
+    delete:
+      tags:
+        - "Event"
+      operationId: "event.delete"
+      summary: "Delete a event"
+      parameters:
+        - $ref: "#/components/parameters/user_id"
+        - $ref: "#/components/parameters/event_id"
+      responses:
+        "204":
+          description: "Successfully deleted event"

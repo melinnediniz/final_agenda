@@ -1,0 +1,21 @@
+<!DOCTYPE html>   
+<html lang="pt-br">   
+<head>
+    <meta charset="utf-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <title> Agenda | Entrar </title> 
+    <link rel="stylesheet" href="{{url_for('static', filename='./css/login.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='./css/base.css')}}">
+</head>
+<body> 
+    <img class="logo" src="{{url_for('static', filename='./img/homepage-logo.svg')}}" alt="logo"/>
+    <h1> Bem-vindo! </h1>
+    <form action="/login" method="post">  
+        <div class="form-container">   
+            <input class="field" type="text" placeholder="E-mail" name="email" required>    
+            <input class="field" type="password" placeholder="Senha" name="password" required>  
+            <button type="submit" class="btn-login">ENTRAR</button>   
+        </div>
+    </form>  
+</body>     
+</html>  

@@ -1,0 +1,44 @@
+/* Style the navbar */
+.navbar {
+  overflow: hidden;
+  background-color: rgb(221, 221, 221);
+  height: 50px;
+  border-bottom: 1px solid #000;
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+  width: 100%;
+}
+
+.navbar h3{
+  margin: 0%;
+}
+
+.navbar #menu-item{
+  position: absolute;
+  left: 3.5%;
+}
+
+.navbar img{
+  padding: 0px;
+}
+
+.navbar #title{
+  position: absolute;
+  left: 12%;
+}
+
+.navbar #logout{
+  position: absolute;
+  right: 5%;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}

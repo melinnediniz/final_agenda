@@ -1,0 +1,37 @@
+<!DOCTYPE html>   
+<html lang="pt-br">   
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title> Agenda </title> 
+<link rel="stylesheet" href="{{url_for('static', filename='./css/base.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='./css/navbar.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='./css/homepage.css')}}"> 
+</head>    
+<body onload="calendar()">
+    <div id="page">
+        <div class="wrapper">
+            <header>
+                <span id="prev">&#10094;</span>
+                <p class="current-date"></p>
+                <span id="next">&#10095;</span>
+            </header>
+            <div class="calendar">
+              <ul class="weeks">
+                <li>D</li>
+                <li>S</li>
+                <li>T</li>
+                <li>Q</li>
+                <li>Q</li>
+                <li>S</li>
+                <li>S</li>
+              </ul>
+              <ul class="days"></ul>
+            </div>
+            <div class="add-event">
+                <button class="btn-add-event"> &#43; Adicionar Evento</button>
+            </div>
+          </div>
+    <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/homepage.js') }}"></script>
+</body>     
+</html>  

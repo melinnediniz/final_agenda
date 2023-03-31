@@ -1,0 +1,39 @@
+img {
+  display: block;
+  margin: 0px auto;
+  padding: 30px;
+}
+
+h1{
+  text-align: center;
+}
+
+  
+form {  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+} 
+
+input[type=text], input[type=password] {   
+          width: 100%;   
+          margin: 8px 0px 30px;
+          padding: 12px;
+          resize: vertical;   
+      }  
+
+.btn-login{
+  margin: 60px auto;
+}
+button:hover {   
+          opacity: 0.8;   
+      }   
+.form-container {   
+          width: 87%;
+          padding: 10px;   
+          justify-content: center; 
+          text-align: center;
+      }  
+.field{
+  height: 51px;
+}
